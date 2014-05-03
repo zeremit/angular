@@ -1,35 +1,22 @@
 var fileApp = angular.module('fileApp', []);
+var size = [ 'B', 'KB', 'MB' ];
+var name = [ 'Sophia Parkenson', 'Trinity Clapton', 'Katherine Adamson'];
 
-fileApp.controller('FileListCtrl', function ($scope) {
-    $scope.files = [
-        {
-            'name':     'Project Standart',
-            'size':     '32Kb',
-            'uplby':    'Trinity Clapton',
-            'uplon':    '29/03/2014'
-        },
-        {
-            'name':     'Performance Test Plan',
-            'size':     '1MB',
-            'uplby':    'Sophia Parkenson',
-            'uplon':    '28/03/2014'
-        },
-        {
-            'name':     'Performance Test Result',
-            'size':     '12MB',
-            'uplby':    'Katherine Adamson',
-            'uplon':    '30/03/2014'
-        }
-    ];
+fileApp.controller('FileListCtrl', function ($scope, $http, $filter) {
+    $http.get('data/files.json').success(function(data) {
+        $scope.files = data;
+    });
 
     $scope.addItem = function () {
 
         $scope.files.push({
-            name : 'Samsung',
-            'size':     '1MB',
-            'uplby':    'Sophia Parkenson',
-            'uplon':    '28/03/2014'
+            'name':     $scope.fileName,
+            'size':     Math.floor(Math.random()*1000) + ' ' + size[Math.floor(Math.random()*size.length)],
+            'uplby':    name[Math.floor(Math.random()*name.length)],
+            'uplon':     $filter('date')(new Date(),'dd/MM/yyyy')
         });
+
+        $scope.fileName = "";
 
     }
 });
