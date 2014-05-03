@@ -4,10 +4,11 @@
     <meta charset="utf-8">
     <title>Google Phone Gallery</title>
     <link rel="stylesheet" href="libs/css/bootstrap.css">
+    <script src="libs/js/date.format.js"></script>
     <script src="libs/js/angular.min.js"></script>
     <script src="js/controllers.js"></script>
 <body ng-controller="FileListCtrl">
-<table class="table table-bordered table-hover" width="500">
+<table class="table-bordered table-hover" width="500">
     <thead>
     <tr>
         <th>Name</th>
@@ -25,6 +26,8 @@
     </tr>
     </tbody>
 </table>
+<input value="" type="text" placeholder="File Name" ng-model="fileName">
+
 
 <button ng-click="addItem()" ng-init="count=0">
     Add File
