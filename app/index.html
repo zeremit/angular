@@ -4,11 +4,12 @@
     <meta charset="utf-8">
     <title>Files</title>
     <link rel="stylesheet" href="libs/css/bootstrap.css">
-    <script src="libs/js/date.format.js"></script>
+    <link rel="stylesheet" href="css/main.css">
     <script src="libs/js/angular.min.js"></script>
     <script src="js/controllers.js"></script>
+</head>
 <body ng-controller="FileListCtrl">
-<table class="table table-bordered table-hover" width="500">
+<table class="table table-bordered" width="500">
     <thead>
     <tr>
         <th>Name</th>
@@ -18,8 +19,10 @@
     </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="file in files">
-        <td>{{file.name}}</td>
+    <tr ng-repeat="file in files" ng-click="editFileName(file)" ng-class='{selected: file==selectedFile}'>
+        <td ng-show=" rename && file==selectedFile"><input type="text" ng-enter="doEnter()" ng-Esc="doEsc()"
+                                                 ng-model="file.name"/></td>
+        <td ng-show="file!=selectedFile || !rename">{{file.name}}</td>
         <td>{{file.size}}</td>
         <td>{{file.uplby}}</td>
         <td>{{file.uplon}}</td>
@@ -29,9 +32,18 @@
 <input value="" type="text" placeholder="File Name" ng-model="fileName">
 
 
-<button ng-click="addItem()" ng-init="count=0">
+<button ng-click="addItem()">
     Add File
 </button>
+
+<button ng-click="renameItem()">
+    Rename File
+</button>
+
+<button ng-click="deleteItem()">
+    Delete File
+</button>
+
 
 </body>
 </html>
