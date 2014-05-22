@@ -45,13 +45,14 @@ fileApp.controller('FileListCtrl', function ($scope, $http, $filter) {
 
     $scope.editFileName = function (file) {
       //  $scope.selectedFile.editing = false;
-        if($scope.rename==true && file!=$scope.selectedFile){
-            console.log(file);
-            console.log($scope.selectedFile);
-            $scope.doEnter();
-        }
+//        if($scope.rename==true && file!=$scope.selectedFile){
+//            console.log(file);
+//            console.log($scope.selectedFile);
+//            $scope.doEnter();
+//        }
         $scope.selectedFile = file;
         $scope.originalFile = angular.extend({},file);
+        console.log("edit");
 //        file.name = 'aa';
         // Clone the original todo to restore it on demand.
 //        $scope.originalTodo = angular.extend({}, todo);
