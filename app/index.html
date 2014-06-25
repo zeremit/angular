@@ -12,6 +12,7 @@
 <script src="libs/js/angular-cookies.js"></script>
 <script src="js/controllers.js"></script>
 <script src="libs/js/translate.js"></script>
+<script src="js/breadcrumb.js"></script>
 <script src="libs/js/service/default-interpolation.js"></script>
 <script src="libs/js/service/handler-log.js"></script>
 <script src="libs/js/service/loader-static-files.js"></script>
@@ -65,7 +66,10 @@
 <button ng-click="deleteItem()">
     Delete File
 </button>
-
+<button ng-click="ok()">
+    Ok
+</button>
+<ul ng-bread-crumbs id="archive"></ul>
 
 </body>
 </html>

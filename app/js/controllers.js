@@ -1,11 +1,17 @@
-var fileApp = angular.module('fileApp', ['ui.bootstrap', 'notify', 'pascalprecht.translate']);
+var fileApp = angular.module('fileApp', ['ui.bootstrap', 'notify', 'pascalprecht.translate', 'breadCrumbService']);
 var size = [ 'B', 'KB', 'MB' ];
 var names = [ 'Sophia Parkenson', 'Trinity Clapton', 'Katherine Adamson'];
 
-fileApp.controller('FileListCtrl', function ($scope, $http, $filter, $translate) {
+fileApp.controller('FileListCtrl', function ($scope, $http, $filter, $translate, breadcrumb) {
     $http.get('data/files.json').success(function (data) {
         $scope.files = data;
     });
+
+    $scope.ok = function () {
+        breadcrumb.push('archive', "11");
+        var links = [{label : '11', href : "#"},{label : '22', href : "#"},{label : '33', href : "#"}];
+        breadcrumb.setItems('archive',links);;
+    };
 
     $scope.setLang = function (langKey) {
         // You can change the language during runtime
