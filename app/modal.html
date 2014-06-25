@@ -1,0 +1,18 @@
+<!doctype html>
+<html ng-app="fileApp">
+<head>
+    <link rel="stylesheet" href="libs/css/bootstrap.css">
+    <script src="libs/js/angular.min.js"></script>
+    <script src="libs/js/ui-bootstrap-tpls-0.11.0.min.js"></script>
+    <script src="js/controllers.js"></script>
+</head>
+<body>
+
+<div ng-controller="ModalDemoCtrl">
+
+
+    <button class="btn" ng-click="open()">Open me!</button>
+    <div ng-show="selected">Selection from a modal: {{ selected }}</div>
+</div>
+</body>
+</html>

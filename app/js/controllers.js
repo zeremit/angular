@@ -1,4 +1,4 @@
-var fileApp = angular.module('fileApp', []);
+var fileApp = angular.module('fileApp', ['ui.bootstrap','notify']);
 var size = [ 'B', 'KB', 'MB' ];
 var names = [ 'Sophia Parkenson', 'Trinity Clapton', 'Katherine Adamson'];
 
@@ -79,3 +79,36 @@ fileApp.directive('ngEnter', function () {
         });
     };
 });
+fileApp.controller('ModalDemoCtrl', function ($scope, $modal, $log) {
+
+    $scope.user = {
+        user: 'name',
+        password: null
+    };
+
+    $scope.open = function () {
+
+        $modal.open({
+            templateUrl: 'dialog/myModal.html',
+            backdrop: true,
+            windowClass: 'modal',
+            controller: function ($scope, $modalInstance, $log, user) {
+                $scope.user = user;
+                $scope.submit = function () {
+                    $log.log('Submiting user info.');
+                    $log.log(user);
+                    $modalInstance.dismiss('cancel');
+                }
+                $scope.cancel = function () {
+                    $modalInstance.dismiss('cancel');
+                };
+            },
+            resolve: {
+                user: function () {
+                    return $scope.user;
+                }
+            }
+        });
+    };
+});
+
